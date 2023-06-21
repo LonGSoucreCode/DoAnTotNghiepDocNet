@@ -21,6 +21,18 @@ namespace DoAnIspace.Controllers
             var a = await _productDbContact.Bills.FromSqlRaw("Dm_Bill_GetAllBill").ToListAsync();
             return Ok(a);
         }
+        [HttpGet("SortBill")]
+        public async Task<ActionResult<BillProductConst>> SortBill()
+        {
+            var a = await _productDbContact.Bills.FromSqlRaw("Dm_Bill_Sort").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("SearchBill")]
+        public async Task<ActionResult<BillProductConst>> SearchBill(string search)
+        {
+            var a = await _productDbContact.Bills.FromSqlRaw($"Dm_Bill_Search {search}").ToListAsync();
+            return Ok(a);
+        }
         [HttpGet("GetAllBillByUserId")]
         public async Task<ActionResult<BillConst>> GetAllBillByUserId(int userid)
         {

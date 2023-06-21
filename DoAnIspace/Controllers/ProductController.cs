@@ -47,6 +47,12 @@ namespace DoAnCuoiNam.Controllers
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Active {id}");
             return Ok(a);
         }
+        [HttpGet("Search")]
+        public async Task<ActionResult<List<ProductConst>>> Search(string search)
+        {
+            var a = await _productDbContact.Products.FromSqlRaw($"Dm_Product_Search {search}").ToListAsync();
+            return Ok(a);
+        }
 
         //[HttpPost]
         //public async Task<IActionResult> AddProduct([])

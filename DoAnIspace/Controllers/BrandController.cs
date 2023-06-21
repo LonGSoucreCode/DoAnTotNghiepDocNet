@@ -28,5 +28,23 @@ namespace DoAnIspace.Controllers
             var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
             return Ok(a[0]);
         }
+        [HttpGet("AddBrand")]
+        public async Task<ActionResult<List<BrandConst>>> AddBrand(int id)
+        {
+            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
+        [HttpGet("DeleteBrand")]
+        public async Task<ActionResult<List<BrandConst>>> DeleteBrand(int id)
+        {
+            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
+        [HttpGet("RestoreBrand")]
+        public async Task<ActionResult<List<BrandConst>>> RestoreBrand(int id)
+        {
+            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
     }
 }

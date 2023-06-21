@@ -15,4 +15,13 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Image\CondImage\" />
+    <Folder Include="Data\Image\AssImage\" />
+    <Folder Include="Data\Image\DetailImage\" />
+    <Folder Include="Data\Image\MainImage\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://json.schemastore.org/azure-deviceupdate-update-manifest-5.json" /></VisualStudio></ProjectExtensions>
+
 </Project>

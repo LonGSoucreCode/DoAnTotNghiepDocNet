@@ -16,7 +16,7 @@ namespace DoAnIspace.Controllers
             _productDbContact = productDbContact;
         }
         [HttpPost("AddUser")]
-        public async Task<ActionResult<List<User>>> AddUser(UserConst u)
+        public async Task<ActionResult<List<User>>> AddUser(UserAdd u)
         {
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_User_Add {u.Email},{u.Password},{u.FirstName},{u.LastName}");
             return Ok(a);
@@ -39,7 +39,7 @@ namespace DoAnIspace.Controllers
             }
         }
         [HttpPost("GetUser")]
-        public async Task<ActionResult<int>> GetUser(UserConst u)
+        public async Task<ActionResult<int>> GetUser(UserAdd u)
         {
             var a = await _productDbContact.Users.FromSqlRaw($"Dm_UserLogin {u.Email},{u.Password}").ToListAsync();
             if(a.Count > 0 )
@@ -63,6 +63,12 @@ namespace DoAnIspace.Controllers
             return Ok(a);
         }
 
+        [HttpPost("UpdateDetailUser")]
+        public async Task<ActionResult<List<User>>> UpdateDetailUser(UserConst u)
+        {
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_User_UpdateDetail {u.User_id},{u.FirstName},{u.LastName},{u.Phone},{u.Address}");
+            return Ok(a);
+        }
 
         [HttpGet("GetUserByID{id}")]
         public async Task<ActionResult<List<User>>> GetUserByID(int id)
@@ -74,6 +80,18 @@ namespace DoAnIspace.Controllers
         public async Task<ActionResult<List<User>>> GetAllUser()
         {
             var a = await _productDbContact.Users.FromSqlRaw("Dm_User_GetAllUser").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("SortUser")]
+        public async Task<ActionResult<List<User>>> SortUser()
+        {
+            var a = await _productDbContact.Users.FromSqlRaw("Dm_User_Sort").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("SearchUser")]
+        public async Task<ActionResult<List<User>>> SearchUser(string search)
+        {
+            var a = await _productDbContact.Users.FromSqlRaw($"Dm_User_Search {search}").ToListAsync();
             return Ok(a);
         }
     }

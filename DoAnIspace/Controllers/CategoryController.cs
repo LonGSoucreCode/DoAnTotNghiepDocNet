@@ -20,5 +20,23 @@ namespace DoAnIspace.Controllers
             var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
             return Ok(a);
         }
+        [HttpGet("AddCategory")]
+        public async Task<ActionResult<List<CategoryConst>>> AddCategory()
+        {
+            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("DeleteCategory")]
+        public async Task<ActionResult<List<CategoryConst>>> DeleteCategory()
+        {
+            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("RestoreCategory")]
+        public async Task<ActionResult<List<CategoryConst>>> RestoreCategory()
+        {
+            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            return Ok(a);
+        }
     }
 }

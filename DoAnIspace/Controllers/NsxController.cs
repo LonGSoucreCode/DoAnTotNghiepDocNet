@@ -14,8 +14,35 @@ namespace DoAnIspace.Controllers
         {
             _productDbContact = productDbContact;
         }
+
+        [HttpGet("GetAllNsx")]
+        public async Task<ActionResult<List<Nsx>>> GetNsxById()
+        {
+            var a = await _productDbContact.Nsxs.FromSqlRaw("Dm_Nsx_GetAllNsx").ToListAsync();
+            return Ok(a);
+        }
         [HttpGet("GetNsxByID{id}")]
         public async Task<ActionResult<List<Nsx>>> GetNsxById(int id)
+        {
+            var a = await _productDbContact.Nsxs.FromSqlRaw($"Dm_Nsx_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
+        [HttpGet("AddNsx")]
+        public async Task<ActionResult<List<Nsx>>> AddNsxById(int id)
+        {
+            var a = await _productDbContact.Nsxs.FromSqlRaw($"Dm_Nsx_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
+
+        [HttpGet("DeleteNsx")]
+        public async Task<ActionResult<List<Nsx>>> DeleteNsxById(int id)
+        {
+            var a = await _productDbContact.Nsxs.FromSqlRaw($"Dm_Nsx_ById {id}").ToListAsync();
+            return Ok(a[0]);
+        }
+
+        [HttpGet("RestoreNsx")]
+        public async Task<ActionResult<List<Nsx>>> RestoreNsxById(int id)
         {
             var a = await _productDbContact.Nsxs.FromSqlRaw($"Dm_Nsx_ById {id}").ToListAsync();
             return Ok(a[0]);
