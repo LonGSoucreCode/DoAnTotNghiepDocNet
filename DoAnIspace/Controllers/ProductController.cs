@@ -28,10 +28,16 @@ namespace DoAnCuoiNam.Controllers
             var a = await _productDbContact.Products.FromSqlRaw($"Dm_Product_ById {id}").ToListAsync();
             return Ok(a[0]);
         }
+        [HttpPost("AddProduct")]
+        public async Task<ActionResult<int>> AddProduct(ProductConstAdd p)
+        {
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Add {p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
+            return Ok(a);
+        }
         [HttpPost("UpdateProduct")] 
         public async Task<ActionResult<int>> UpdateProduct(ProductConst p)
         {
-            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Update {p.Product_id},{p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Update {p.Product_id},{p.Image_Product_id},{p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
             return Ok(a);
         }
 
@@ -53,12 +59,5 @@ namespace DoAnCuoiNam.Controllers
             var a = await _productDbContact.Products.FromSqlRaw($"Dm_Product_Search {search}").ToListAsync();
             return Ok(a);
         }
-
-        //[HttpPost]
-        //public async Task<IActionResult> AddProduct([])
-        //{
-        //    var out = await _productDbContext.Products.ToListAsync();
-        //    return Ok(out);
-        //}
     }
 }

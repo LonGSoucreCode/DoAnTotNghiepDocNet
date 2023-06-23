@@ -29,22 +29,22 @@ namespace DoAnIspace.Controllers
             return Ok(a[0]);
         }
         [HttpGet("AddBrand")]
-        public async Task<ActionResult<List<BrandConst>>> AddBrand(int id)
+        public async Task<ActionResult<int>> AddBrand(string name, int nsx)
         {
-            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
-            return Ok(a[0]);
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Brand_Add {name},{nsx}");
+            return 0;
         }
         [HttpGet("DeleteBrand")]
-        public async Task<ActionResult<List<BrandConst>>> DeleteBrand(int id)
+        public async Task<ActionResult<int>> DeleteBrand(int id)
         {
-            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
-            return Ok(a[0]);
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Brand_Delete {id}");
+            return 0;
         }
         [HttpGet("RestoreBrand")]
-        public async Task<ActionResult<List<BrandConst>>> RestoreBrand(int id)
+        public async Task<ActionResult<int>> RestoreBrand(int id)
         {
-            var a = await _productDbContact.Brands.FromSqlRaw($"Dm_Brand_ById {id}").ToListAsync();
-            return Ok(a[0]);
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Brand_Restore {id}");
+            return 0;
         }
     }
 }

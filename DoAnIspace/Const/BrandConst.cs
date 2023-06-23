@@ -6,4 +6,9 @@
         public string Brand_Name { get; set; }
         public int Nsx_id { get; set; }
     }
+    public class BrandAddConst
+    {
+        public string Brand_Name { get; set; }
+        public int Nsx { get; set; }
+    }
 }

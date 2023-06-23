@@ -7,6 +7,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Uploads\Product\AssImage\**" />
+    <Compile Remove="wwwroot\Uploads\Product\CondImage\**" />
+    <Compile Remove="wwwroot\Uploads\Product\DetailImage\**" />
+    <Compile Remove="wwwroot\Uploads\Product\MainImage\**" />
+    <Content Remove="wwwroot\Uploads\Product\AssImage\**" />
+    <Content Remove="wwwroot\Uploads\Product\CondImage\**" />
+    <Content Remove="wwwroot\Uploads\Product\DetailImage\**" />
+    <Content Remove="wwwroot\Uploads\Product\MainImage\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Product\AssImage\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Product\CondImage\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Product\DetailImage\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\Product\MainImage\**" />
+    <None Remove="wwwroot\Uploads\Product\AssImage\**" />
+    <None Remove="wwwroot\Uploads\Product\CondImage\**" />
+    <None Remove="wwwroot\Uploads\Product\DetailImage\**" />
+    <None Remove="wwwroot\Uploads\Product\MainImage\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="7.0.3">
       <PrivateAssets>all</PrivateAssets>
@@ -16,10 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Image\CondImage\" />
-    <Folder Include="Data\Image\AssImage\" />
-    <Folder Include="Data\Image\DetailImage\" />
-    <Folder Include="Data\Image\MainImage\" />
+    <Folder Include="wwwroot\Uploads\Common\" />
+    <Folder Include="wwwroot\Uploads\Product\P7\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1development_1json__JsonSchema="https://json.schemastore.org/azure-deviceupdate-update-manifest-5.json" /></VisualStudio></ProjectExtensions>

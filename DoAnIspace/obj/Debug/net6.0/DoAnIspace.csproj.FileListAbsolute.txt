@@ -85,3 +85,4 @@ D:\LUUVAODAY\Long\DoAnIspace\DoAnIspace\obj\Debug\net6.0\refint\DoAnIspace.dll
 D:\LUUVAODAY\Long\DoAnIspace\DoAnIspace\obj\Debug\net6.0\DoAnIspace.pdb
 D:\LUUVAODAY\Long\DoAnIspace\DoAnIspace\obj\Debug\net6.0\DoAnIspace.genruntimeconfig.cache
 D:\LUUVAODAY\Long\DoAnIspace\DoAnIspace\obj\Debug\net6.0\ref\DoAnIspace.dll
+D:\LUUVAODAY\Long\DoAnIspace\DoAnIspace\bin\Debug\net6.0\DoAnIspace.staticwebassets.runtime.json
