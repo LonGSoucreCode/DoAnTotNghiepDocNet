@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DoAnIspace.Migrations
 {
     [DbContext(typeof(ProductDbContact))]
-    [Migration("20230413052816_initial")]
-    partial class initial
+    [Migration("20230623113350_Initial Migration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -169,7 +169,13 @@ namespace DoAnIspace.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Product_Price")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Product_id")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Size_id")
                         .HasColumnType("int");
 
                     b.HasKey("CT_Bill_id");
@@ -355,6 +361,34 @@ namespace DoAnIspace.Migrations
                     b.HasKey("Image_Product_id");
 
                     b.ToTable("DM_Image_Product");
+                });
+
+            modelBuilder.Entity("DoAnIspace.Models.ListCode", b =>
+                {
+                    b.Property<int>("List_id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("List_id"));
+
+                    b.Property<DateTime>("CreateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DeleteTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("List_code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("List_name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("List_id");
+
+                    b.ToTable("DM_ListCode");
                 });
 
             modelBuilder.Entity("DoAnIspace.Models.Nsx", b =>

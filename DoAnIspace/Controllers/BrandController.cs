@@ -34,6 +34,12 @@ namespace DoAnIspace.Controllers
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Brand_Add {name},{nsx}");
             return 0;
         }
+        [HttpPost("UpdateBrand")]
+        public async Task<ActionResult<int>> UpdateBrand(BrandConst brand)
+        {
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Brand_Update {brand.Brand_id},{brand.Brand_Name},{brand.Nsx_id}");
+            return Ok(a);
+        }
         [HttpGet("DeleteBrand")]
         public async Task<ActionResult<int>> DeleteBrand(int id)
         {

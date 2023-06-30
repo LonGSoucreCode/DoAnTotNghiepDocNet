@@ -46,9 +46,9 @@ namespace DoAnIspace.Controllers
             return Ok(a[a.Count - 1]);
         }
         [HttpPost("AddBill")]
-        public async Task<ActionResult<BillConst>> AddBill(BillConst bill)
+        public async Task<ActionResult<BillConst>> AddBill(BillConstAdd bill)
         {
-            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Bill_Create {bill.User_id},{bill.Bill_Count},{bill.Bill_Total}");
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Bill_Create {bill.User_id},{bill.Bill_Count},{bill.Bill_Total},{bill.Bill_Status}");
             var b = await _productDbContact.Bills.FromSqlRaw($"Dm_Bill_GetByUserid {bill.User_id}").ToListAsync();
             return Ok(b[b.Count - 1]);
         }

@@ -20,22 +20,36 @@ namespace DoAnIspace.Controllers
             var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
             return Ok(a);
         }
-        [HttpGet("AddCategory")]
-        public async Task<ActionResult<List<CategoryConst>>> AddCategory()
+        [HttpGet("GetCategoryById")]
+        public async Task<ActionResult<List<CategoryConst>>> GetCategoryById(int id)
         {
-            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            var a = await _productDbContact.Categorys.FromSqlRaw($"Dm_Category_GetById {id}").ToListAsync();
+            return Ok(a);
+        }
+        [HttpGet("AddCategory")]
+        public async Task<ActionResult<List<CategoryConst>>> AddCategory(string name)
+        {
+            name = name.Replace(' ', '_');
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Category_Add {name}");
+            return Ok(a);
+        }
+        [HttpGet("UpdateCategory")]
+        public async Task<ActionResult<List<CategoryConst>>> UpdateCategory(int id, string name)
+        {
+            name = name.Replace(' ', '_');
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Category_Update {id},{name}");
             return Ok(a);
         }
         [HttpGet("DeleteCategory")]
-        public async Task<ActionResult<List<CategoryConst>>> DeleteCategory()
+        public async Task<ActionResult<List<CategoryConst>>> DeleteCategory(int id)
         {
-            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Category_Delete {id}");
             return Ok(a);
         }
         [HttpGet("RestoreCategory")]
-        public async Task<ActionResult<List<CategoryConst>>> RestoreCategory()
+        public async Task<ActionResult<List<CategoryConst>>> Dm_Category_Active(int id)
         {
-            var a = await _productDbContact.Categorys.FromSqlRaw("Dm_Category_Get").ToListAsync();
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Category_Active {id}");
             return Ok(a);
         }
     }

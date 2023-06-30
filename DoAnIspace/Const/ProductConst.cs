@@ -17,6 +17,7 @@ namespace DoAnIspace.Const
     }
     public class ProductConstAdd
     {
+        public int Image_Product_id { get; set; }
         public string Product_Name { get; set; }
         public string Product_Price { get; set; }
         public int Brand_id { get; set; }

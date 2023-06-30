@@ -31,23 +31,25 @@ namespace DoAnCuoiNam.Controllers
         [HttpPost("AddProduct")]
         public async Task<ActionResult<int>> AddProduct(ProductConstAdd p)
         {
-            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Add {p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
+            p.Product_Name = p.Product_Name.Replace(' ', '_');
+            var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Add {p.Image_Product_id},{p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
             return Ok(a);
         }
         [HttpPost("UpdateProduct")] 
         public async Task<ActionResult<int>> UpdateProduct(ProductConst p)
         {
+            p.Product_Name = p.Product_Name.Replace(' ', '_');
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Update {p.Product_id},{p.Image_Product_id},{p.Product_Name},{p.Product_Price},{p.Brand_id},{p.Product_Story},{p.Category_id},{p.Sale_id}");
             return Ok(a);
         }
 
-        [HttpGet("DeleteProduct{id}")]
+        [HttpGet("DeleteProduct")]
         public async Task<ActionResult<int>> DeleteProduct(int id)
         {
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Delete {id}");
             return Ok(a);
         }
-        [HttpGet("RestoreProduct{id}")]
+        [HttpGet("RestoreProduct")]
         public async Task<ActionResult<int>> RestoreProduct(int id)
         {
             var a = await _productDbContact.Database.ExecuteSqlRawAsync($"Dm_Product_Active {id}");
